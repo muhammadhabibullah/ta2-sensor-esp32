@@ -1,0 +1,17 @@
+
+// BICYCLE ID
+#define BICYCLE_ID "123456"
+
+// WIFI
+#define WLAN_SSID  "wifi"
+#define WLAN_PASS  "pass"
+
+// SERVER
+#define SERVER_HOST "127.0.0.1"
+#define SERVER_PORT = 8000
+
+// GMT LOCATION on Asia/Jakarta
+#define GMT 7 
+
+// URL
+#define CYCLER_DATA_URL "/api/cycling"
