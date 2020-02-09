@@ -1,4 +1,5 @@
 
+// Setup serial monitor & GPS baud
 void setupSerial() {
 
     Serial.begin(115200);
@@ -6,6 +7,7 @@ void setupSerial() {
 
 }
 
+// Setup pin mode for button, buzzer, and LED
 void setupInterfaceIO() {
   
     pinMode(START_STOP_PIN, INPUT_PULLUP);

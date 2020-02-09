@@ -1,10 +1,9 @@
 
+// Get cycler data including cycler age, distance, elevation, and cycling time target
 void getCyclerData() {
 
     if (IS_WIFI_CONNECTED == true) {
-        // String request = generateGetHTTP(CYCLER_DATA_URL);
-        // DynamicJsonDocument response = requestData(request, CD_JSON_TOTAL_OBJECTS, CD_JSON_STRING_BYTES);
-
+       
         http.begin(SERVER_HOST, SERVER_PORT, String(CYCLER_DATA_URL) + String(BICYCLE_ID));
         int httpCode = http.GET();
 

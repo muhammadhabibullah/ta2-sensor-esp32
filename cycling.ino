@@ -1,4 +1,5 @@
 
+// Reset all cycling variable and set cycling status to TRUE when cycler push START/STOP button
 void startCycling() {
 
     if((digitalRead(START_STOP_PIN) == LOW) && (IS_CYCLING == false)){
@@ -19,6 +20,7 @@ void startCycling() {
     
 }
 
+// Count all cycling metrics while cycling status is TRUE
 void whileCycling() {
     
     if (IS_CYCLING == true) {
@@ -32,6 +34,7 @@ void whileCycling() {
     
 }
 
+// Stop counting cyicling metrics, calculate cycling data and set cycling status to FALSE when cycler push START/STOP button
 void stopCycling() {
 
     if((digitalRead(START_STOP_PIN) == LOW) && (IS_CYCLING == true)){
@@ -40,6 +43,8 @@ void stopCycling() {
     }
     
 }
+
+// Send cycling data from SD card when connected to internet
 void sendCyclingData() {
     // jika ada data yg belum dikirim ke server
     // connectWifi();  

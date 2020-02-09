@@ -1,4 +1,5 @@
 
+// Count target percentage based on the target type
 int getTargetPercentage(int type) {
     float percent;
     switch (type) {

@@ -1,7 +1,7 @@
 
+// Initialize SD card module connection
 void connectSD() {
   
-    // Initialize SD card
     SD.begin(SD_CS_PIN);  
     if(!SD.begin(SD_CS_PIN)) {
         Serial.println("Card Mount Failed");

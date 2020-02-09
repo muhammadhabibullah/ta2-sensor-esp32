@@ -1,4 +1,5 @@
 
+// Get current date and time using GPS
 void getDateTime(TinyGPSDate &d, TinyGPSTime &t, int gmt) {
   
     int gmtDiff = 0;

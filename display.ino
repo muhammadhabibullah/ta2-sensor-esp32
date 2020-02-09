@@ -1,4 +1,5 @@
 
+// Display home page of sensor system interface on OLED
 void displayHomePage(){
   
     u8g2.begin();
@@ -17,6 +18,7 @@ void displayHomePage(){
     
 }
 
+// Display cycling information based on current channel on OLED
 void displayChannel() {
 
     if (digitalRead(CHANNEL_PIN) == LOW) {
@@ -97,6 +99,7 @@ void displayChannel() {
     
 }
 
+// Display time on OLED
 void displayClock() {
     printTitle("JAM", 50, 10);
     printInformation(timeStr, 20, 42);
@@ -104,6 +107,7 @@ void displayClock() {
     printTotalSatellite();
 }
 
+// Display stopwatch on OLED
 void displayStopwatch() {
     printTitle("STOPWATCH", 50, 10);
     printInformation(stopwatch, 25, 10);
@@ -114,6 +118,7 @@ void displayStopwatch() {
     }
 }
 
+// Display total distance on OLED
 void displayDistance() {
     printTitle("JARAK TEMPUH", 10, 10);
     String totalDistanceStr = String(totalDistance) + " km";
@@ -126,6 +131,7 @@ void displayDistance() {
     printTotalSatellite();
 }
 
+// Display current pace on OLED
 void displayPace() {
     printTitle("KECEPATAN", 22, 10);
     String speedStr = String(currentSpeed) + " km/jam";
@@ -135,6 +141,7 @@ void displayPace() {
     printTotalSatellite();
 }
 
+// Display total elevation on OLED
 void displayElevation() {
     printTitle("KETINGGIAN", 20, 10);
     String totalElevationStr = String(totalElevation) + " m";
@@ -147,16 +154,19 @@ void displayElevation() {
     printTotalSatellite();
 }
 
+// Display current heart rate on OLED
 void displayHeartRate() {
     printTitle("DETAK JANTUNG", 5, 10);
 }
 
+// Display searching GPS page while GPS doesn't get a satellite signal yet on OLED
 void displaySearchGPSPage() {
     printTitle("LOADING", 20, 10);
     printSubInformation("Searching GPS signal . . . . . .", 0, 60);
     printTotalSatellite();
 }
 
+// Print title on the top of OLED
 void printTitle(String title, int xCursor, int yCursor) {
     u8g2.setFont(u8g2_font_crox1cb_tf);
     u8g2.setCursor(xCursor, yCursor);
@@ -164,18 +174,21 @@ void printTitle(String title, int xCursor, int yCursor) {
     u8g2.drawLine(0,12,128,12);
 }
 
+// Print main information on the center of OLED
 void printInformation(String info, int xCursor, int yCursor) {
     u8g2.setFont(u8g2_font_t0_22b_tn);
     u8g2.setCursor(xCursor, yCursor);
     u8g2.print(info);
 }
 
+// Print sub-information on the bottom-left of OLED
 void printSubInformation(String info, int xCursor, int yCursor) {
     u8g2.setFont(u8g2_font_nine_by_five_nbp_tf);
     u8g2.setCursor(xCursor, yCursor);
     u8g2.print(info);
 }
 
+// Print total satellite signal on the bottom-right of OLED
 void printTotalSatellite() {
     u8g2.setFont(u8g2_font_courB08_tn);
     u8g2.setCursor(105, 64);

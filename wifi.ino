@@ -1,4 +1,5 @@
 
+// Initialize WLAN connection
 void connectWifi() {
   
     Serial.print("Connecting to ");

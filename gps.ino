@@ -1,4 +1,5 @@
 
+// Update current location using GPS
 void getGPS() {
 
     currentDate = GPS.date;
@@ -30,7 +31,7 @@ void getGPS() {
     }
 }
 
-
+// Make GPS not checking location rapidly 
 static void smartDelay(unsigned long ms) {
     unsigned long start = millis();
     do {
