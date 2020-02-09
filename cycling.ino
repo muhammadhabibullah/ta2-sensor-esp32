@@ -10,9 +10,9 @@ void startCycling() {
             lastLat = GPS.location.lat();
             lastLong = GPS.location.lng();
             lastAltitude = GPS.altitude.meters();
-            CURRENT_CHANNEL = STOPWATCH_CHANNEL;
+            CURRENT_CHANNEL = STOPWATCH;
         } else {
-            CURRENT_CHANNEL = SEARCH_GPS_CHANNEL;
+            CURRENT_CHANNEL = SEARCH_GPS;
             searchGPSMillis = millis();
         }
     }

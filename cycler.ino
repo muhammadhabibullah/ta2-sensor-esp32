@@ -27,9 +27,6 @@ void getCyclerData() {
                 cycler.target.distance = doc["distance"];
                 cycler.target.elevation = doc["elevation"];
                 cycler.target.finishTime = doc["time"];
-            
-                Serial.println("Cycler age: " + cycler.yearAge);
-                Serial.println("Success get cycler data"); 
             }
 
         } else {

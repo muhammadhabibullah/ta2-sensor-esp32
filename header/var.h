@@ -24,13 +24,13 @@ bool IS_CYCLING = false;
 
 // DISPLAY
 int CURRENT_CHANNEL = 0;
-const int CLOCK_CHANNEL = 0;
-const int STOPWATCH_CHANNEL = 1;
-const int DISTANCE_CHANNEL = 2;
-const int PACE_CHANNEL = 3;
-const int ELEVATION_CHANNEL = 4;
-const int HEART_RATE_CHANNEL = 5;
-const int SEARCH_GPS_CHANNEL = 99;
+const int CLOCK = 0;
+const int STOPWATCH = 1;
+const int DISTANCE = 2;
+const int PACE = 3;
+const int ELEVATION = 4;
+const int HEART_RATE = 5;
+const int SEARCH_GPS = 99;
 const int LAST_CHANNEL = 5;
 unsigned long searchGPSMillis;
 const int SEARCH_GPS_DISPLAY_TIME = 5;
@@ -50,6 +50,8 @@ TinyGPSTime currentTime;
 int currentDay = 0, currentMonth = 0, currentYear = 0, currentHour = 0, currentMinute = 0, currentSecond = 0;
 char stopwatch[32];
 char dateTimeStr[20];
+char dateStr[10];
+char timeStr[8];
 unsigned long elapsedTime, startTime;
 
 // String formattedDate;

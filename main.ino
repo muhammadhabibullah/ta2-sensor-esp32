@@ -3,11 +3,11 @@
 
 void setup() {
     setupSerial();
+    setupInterfaceIO();
     displayHomePage();
     connectSD();
     connectWifi();
     getCyclerData();
-    setupInterfaceIO();   
 }
 
 void loop() {

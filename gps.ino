@@ -3,11 +3,8 @@ void getGPS() {
 
     currentDate = GPS.date;
     currentTime = GPS.time;
-  
     totalSatellite = GPS.satellites.value();
-    Serial.print("Total Satellite = ");
-    Serial.println(totalSatellite, 6);
-        
+
     if (GPS.location.isValid() == 1) {
   
         currentLat = GPS.location.lat();
@@ -29,7 +26,7 @@ void getGPS() {
     smartDelay(1000);
   
     if (millis() > 5000 && GPS.charsProcessed() < 10) {
-      Serial.println(F("No GPS detected: check wiring."));
+      // Serial.println(F("No GPS detected: check wiring."));
     }
 }
 

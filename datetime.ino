@@ -79,7 +79,7 @@ void getDateTime(TinyGPSDate &d, TinyGPSTime &t, int gmt) {
     }
     
     sprintf(dateTimeStr, "%02d-%02d-%02dT%02d:%02d:%02d", currentYear, currentMonth, currentDay, currentHour, currentMinute, currentSecond);
-    Serial.print("CLOCK: ");
-    Serial.println(dateTimeStr);
+    sprintf(dateStr, "%02d/%02d/%02d", currentYear, currentMonth, currentDay);
+    sprintf(timeStr, "%02d:%02d:%02d", currentHour, currentMinute, currentSecond);
     
 }
