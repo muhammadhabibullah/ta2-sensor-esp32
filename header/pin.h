@@ -3,8 +3,8 @@
 #define RX2_PIN 16
 #define TX2_PIN 17
 
-#define START_STOP_PIN 21 // ???
-#define CHANNEL_PIN 15 // ??
+#define START_STOP_PIN 13 // ???
+#define CHANNEL_PIN 12 // ??
 // #define LED_PIN 
 // #define BUZZER_PIN 
 
