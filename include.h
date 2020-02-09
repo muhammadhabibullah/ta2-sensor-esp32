@@ -7,6 +7,7 @@
 #include <WiFiUdp.h>
 #include <NTPClient.h>
 #include <TinyGPS++.h>
+#include <HTTPClient.h>
 #include <ArduinoJson.h>
 #include <SoftwareSerial.h>
 

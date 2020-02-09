@@ -5,6 +5,7 @@ WiFiClient wifiClient;
 U8G2_SSD1306_128X64_NONAME_1_HW_I2C u8g2(U8G2_R0, U8X8_PIN_NONE);
 SoftwareSerial GPSSerial(RX2_PIN, TX2_PIN);
 TinyGPSPlus GPS;
+HTTPClient http;
 
 // WIFI
 bool IS_WIFI_CONNECTED = false;
