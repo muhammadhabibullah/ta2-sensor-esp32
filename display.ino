@@ -33,7 +33,7 @@ void displayChannel() {
         case CLOCK:
         u8g2.firstPage();
         do {
-            displayClock();
+            displayClock(GPS.date, GPS.time);
         } while ( u8g2.nextPage() );
         delay(10);
         break;
@@ -100,33 +100,43 @@ void displayChannel() {
 }
 
 // Display time on OLED
-void displayClock() {
+void displayClock(TinyGPSDate &d, TinyGPSTime &t) {
     printTitle("JAM", 50, 10);
-    printInformation(timeStr, 20, 42);
-    printSubInformation(dateStr, 0, 64);
+    if (!t.isValid()) {
+        printInformation(F("******** "));
+    } else {
+        printInformation(timeStr);
+    }
+    if (!d.isValid()) {
+        printSubInformation(F("******** "));
+    } else {
+        printSubInformation(dateStr);
+    }
     printTotalSatellite();
 }
 
 // Display stopwatch on OLED
 void displayStopwatch() {
-    printTitle("STOPWATCH", 50, 10);
-    printInformation(stopwatch, 25, 10);
+    printTitle("STOPWATCH", 25, 10);
+    printInformation(stopwatch);
     if (cycler.target.finishTime != 0) {
         int timeTarget = getTargetPercentage(STOPWATCH);
         String timeTargetStr = "Target: " + String(timeTarget) + "%";
-        printSubInformation(timeTargetStr, 0, 60);
+        printSubInformation(timeTargetStr);
     }
 }
 
 // Display total distance on OLED
 void displayDistance() {
     printTitle("JARAK TEMPUH", 10, 10);
-    String totalDistanceStr = String(totalDistance) + " km";
-    printInformation(totalDistanceStr, 25, 10);
+    char totalDistanceStr[15];
+    sprintf(totalDistanceStr, "%.1f", totalDistance);
+    printInformation(totalDistanceStr);
+    printInformationUnit("km");
     if (cycler.target.distance != 0) {
         int distanceTarget = getTargetPercentage(DISTANCE);
         String distanceTargetStr = "Target: " + String(distanceTarget) + "%";
-        printSubInformation(distanceTargetStr, 0, 60);
+        printSubInformation(distanceTargetStr);
     }
     printTotalSatellite();
 }
@@ -134,22 +144,25 @@ void displayDistance() {
 // Display current pace on OLED
 void displayPace() {
     printTitle("KECEPATAN", 22, 10);
-    String speedStr = String(currentSpeed) + " km/jam";
-    printInformation(speedStr, 25, 10);
-    String headingStr = "Direction: " + currentHeading;
-    printSubInformation(headingStr, 0, 60);
+    char speedStr[15];
+    sprintf(speedStr, "%d", currentSpeed);
+    printInformation(speedStr);
+    printInformationUnit("km/jam");
+    printSubInformation(currentHeading);
     printTotalSatellite();
 }
 
 // Display total elevation on OLED
 void displayElevation() {
     printTitle("KETINGGIAN", 20, 10);
-    String totalElevationStr = String(totalElevation) + " m";
-    printInformation(totalElevationStr, 25, 10);
+    char totalElevationStr[15];
+    sprintf(totalElevationStr, "%.1f m", totalElevation);
+    printInformation(totalElevationStr);
+    printInformationUnit("m");
     if (cycler.target.elevation != 0) {
         int elevationTarget = getTargetPercentage(ELEVATION);
         String elevationTargetStr = "Target: " + String(elevationTarget) + "%";
-        printSubInformation(elevationTargetStr, 0, 60);
+        printSubInformation(elevationTargetStr);
     }
     printTotalSatellite();
 }
@@ -161,8 +174,8 @@ void displayHeartRate() {
 
 // Display searching GPS page while GPS doesn't get a satellite signal yet on OLED
 void displaySearchGPSPage() {
-    printTitle("LOADING", 20, 10);
-    printSubInformation("Searching GPS signal . . . . . .", 0, 60);
+    printTitle("LOADING", 35, 10);
+    printSubInformation("No GPS signal!");
     printTotalSatellite();
 }
 
@@ -175,17 +188,24 @@ void printTitle(String title, int xCursor, int yCursor) {
 }
 
 // Print main information on the center of OLED
-void printInformation(String info, int xCursor, int yCursor) {
+void printInformation(String info) {
     u8g2.setFont(u8g2_font_t0_22b_tn);
-    u8g2.setCursor(xCursor, yCursor);
+    u8g2.setCursor(20, 42);
     u8g2.print(info);
 }
 
 // Print sub-information on the bottom-left of OLED
-void printSubInformation(String info, int xCursor, int yCursor) {
+void printSubInformation(String info) {
     u8g2.setFont(u8g2_font_nine_by_five_nbp_tf);
-    u8g2.setCursor(xCursor, yCursor);
+    u8g2.setCursor(0, 60);
     u8g2.print(info);
+}
+
+// Print information unit beside the information
+void printInformationUnit(String unit) {
+    u8g2.setFont(u8g2_font_glasstown_nbp_tf);
+    u8g2.setCursor(90, 42);
+    u8g2.print(unit);
 }
 
 // Print total satellite signal on the bottom-right of OLED

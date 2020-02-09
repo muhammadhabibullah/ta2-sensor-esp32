@@ -21,7 +21,7 @@ void getGPS() {
         Serial.print("SPEED = ");
         Serial.println(currentSpeed, 6);
     
-        currentHeading = GPS.cardinal(GPS.course.value());
+        currentHeading = getMataAngin(GPS.course.value());
     }
     
     smartDelay(1000);

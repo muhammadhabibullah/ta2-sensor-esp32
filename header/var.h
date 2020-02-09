@@ -48,7 +48,7 @@ TinyGPSTime currentTime;
 
 // CLOCK & STOPWATCH
 int currentDay = 0, currentMonth = 0, currentYear = 0, currentHour = 0, currentMinute = 0, currentSecond = 0;
-char stopwatch[32];
+char *stopwatch = "00:00:00";
 char dateTimeStr[20];
 char dateStr[10];
 char timeStr[8];

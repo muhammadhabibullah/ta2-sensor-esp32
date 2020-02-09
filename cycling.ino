@@ -7,6 +7,7 @@ void startCycling() {
             IS_CYCLING == true;
             totalElevation = 0;
             totalDistance = 0;
+            stopwatch = "00:00:00";
             startTime = millis();
             lastLat = GPS.location.lat();
             lastLong = GPS.location.lng();

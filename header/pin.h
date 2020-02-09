@@ -4,7 +4,7 @@
 #define TX2_PIN 17
 
 #define START_STOP_PIN 13 // ???
-#define CHANNEL_PIN 12 // ??
+#define CHANNEL_PIN 14 // ??
 // #define LED_PIN 
 // #define BUZZER_PIN 
 
