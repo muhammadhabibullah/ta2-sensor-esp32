@@ -30,6 +30,7 @@ void getCyclerData() {
             
                 Serial.println("Cycler age: " + cycler.yearAge);
                 Serial.println("Success get cycler data"); 
+            }
 
         } else {
             Serial.printf("[HTTP] GET... failed, error: %s\n", http.errorToString(httpCode).c_str());
