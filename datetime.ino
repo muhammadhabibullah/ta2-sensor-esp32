@@ -30,7 +30,7 @@ void getDateTime(TinyGPSDate &d, TinyGPSTime &t, int gmt) {
                 // FEB 
                 else if (currentMonth == 2){
 
-                    // CABISAT
+                    // LEAP OF YEAR
                     if (currentYear % 4 == 0){
                         if (currentDay == 30){
                             currentDay = 1;

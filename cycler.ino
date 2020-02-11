@@ -2,7 +2,7 @@
 // Get cycler data including cycler age, distance, elevation, and cycling time target
 void getCyclerData() {
 
-    if (IS_WIFI_CONNECTED == true) {
+    if (IS_WIFI_CONNECTED) {
        
         http.begin(SERVER_HOST, SERVER_PORT, String(CYCLER_DATA_URL) + String(BICYCLE_ID));
         int httpCode = http.GET();
