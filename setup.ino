@@ -9,4 +9,6 @@ void setupSerial() {
 void setupInterfaceIO() {
     pinMode(START_PIN, INPUT_PULLUP);
     pinMode(STOP_PIN, INPUT_PULLUP);
+    pinMode(LED_PIN, OUTPUT);
+    EasyBuzzer.setPin(BUZZER_PIN);
 }

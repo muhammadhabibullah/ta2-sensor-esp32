@@ -135,6 +135,15 @@ void displayElevation() {
 // Display current heart rate on OLED
 void displayHeartRate() {
     printTitle("DETAK JANTUNG", 5, 10);
+    char bpmStr[15];
+    sprintf(bpmStr, "%d", BPM);
+    printInformation(bpmStr);
+    printInformationUnit("bpm");
+    if (OVER_BPM) {
+        printSubInformation("Detak jantung over!");
+    } else if (LOW_BPM) {
+        printSubInformation("Detak jantung pelan!");
+    }
 }
 
 // Display searching GPS page while GPS doesn't get a satellite signal yet on OLED
