@@ -9,7 +9,7 @@ void displayHomePage(){
         u8g2.print("BERSEPEDA");
         u8g2.setFont(u8g2_font_nine_by_five_nbp_tf);
         u8g2.setCursor(0, 60);
-        u8g2.print("Loading");
+        u8g2.print("Memuat");
         u8g2.setFont(u8g2_font_glasstown_nbp_tf);
         u8g2.setCursor(40, 60);
         u8g2.print(" . . . . . ");  
@@ -140,16 +140,16 @@ void displayHeartRate() {
     printInformation(bpmStr);
     printInformationUnit("bpm");
     if (OVER_BPM) {
-        printSubInformation("Detak jantung over!");
+        printSubInformation("Detak jantung Anda over!");
     } else if (LOW_BPM) {
-        printSubInformation("Detak jantung pelan!");
+        printSubInformation("Detak jantung Anda pelan!");
     }
 }
 
 // Display searching GPS page while GPS doesn't get a satellite signal yet on OLED
 void displaySearchGPSPage() {
-    printTitle("LOADING", 35, 10);
-    printSubInformation("No GPS signal!");
+    printTitle("MEMUAT", 35, 10);
+    printSubInformation("Tidak ada sinyal GPS!");
     printTotalSatellite();
 }
 
