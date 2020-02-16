@@ -1,9 +1,9 @@
 
 // Reset all cycling variable and set cycling status to TRUE when cycler push START button
 void startCycling() {
-    if((digitalRead(START_PIN) == LOW) && (!IS_CYCLING)){
+    if((digitalRead(START_PIN) == LOW) && (!CYCLING)){
         if ((GPS.time.isValid()) && (GPS.date.isValid())) { //  && (currentDay != 0)
-            IS_CYCLING = true;
+            CYCLING = true;
             totalElevation = 0;
             totalDistance = 0;
             startTime = millis();
@@ -21,20 +21,19 @@ void startCycling() {
 
 // Count all cycling metrics while cycling status is TRUE
 void whileCycling() {
-    if (IS_CYCLING) {
+    if (CYCLING) {
         countDistance();
         countElevation();
         countTime();
         checkIfBPMAbnormal();
-        //   saveRawData();
-        
+        saveCyclingData();
     }
 }
 
 // Stop counting cycling metrics, calculate cycling data and set cycling status to FALSE when cycler push STOP button
 void stopCycling() {
-    if((digitalRead(STOP_PIN) == LOW) && (IS_CYCLING)){
-        IS_CYCLING = false;
+    if((digitalRead(STOP_PIN) == LOW) && (CYCLING)){
+        CYCLING = false;
         stopCountPulse();
         //   calculateCyclingData();
         //   saveFinaleData();

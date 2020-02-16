@@ -21,7 +21,7 @@ const int CD_JSON_STRING_BYTES = 28;
 Cycler cycler;
 
 // BUTTON
-bool IS_CYCLING = false;
+bool CYCLING = false;
 
 // DISPLAY
 int CURRENT_CHANNEL = 0;

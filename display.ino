@@ -18,7 +18,7 @@ void displayHomePage(){
 
 // Display cycling information based on current channel on OLED
 void displayChannel() {
-    if (((digitalRead(STOP_PIN) == LOW) && (!IS_CYCLING)) || ((digitalRead(START_PIN) == LOW) && (IS_CYCLING))) {
+    if (((digitalRead(STOP_PIN) == LOW) && (!CYCLING)) || ((digitalRead(START_PIN) == LOW) && (CYCLING))) {
         CURRENT_CHANNEL = ++CURRENT_CHANNEL;
     }
 
