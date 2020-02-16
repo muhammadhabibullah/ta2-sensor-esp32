@@ -1,6 +1,7 @@
 
 // Get current date and time using GPS
-void getDateTime(TinyGPSDate &d, TinyGPSTime &t, int gmt) {int gmtDiff = 0;
+void getDateTime(TinyGPSDate &d, TinyGPSTime &t, int gmt) {
+    int gmtDiff = 0;
     if (gmt >= 0) {
         gmtDiff = 24 - gmt;
     }
