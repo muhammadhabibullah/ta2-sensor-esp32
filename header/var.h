@@ -56,7 +56,6 @@ char timeStr[8];
 unsigned long elapsedTime, startTime;
 
 // BPM
-bool COUNTING_PULSE = false;
 bool PAUSING_PULSE = false;
 bool LOW_BPM = false;
 bool OVER_BPM = false;

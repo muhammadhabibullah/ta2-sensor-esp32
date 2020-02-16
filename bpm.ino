@@ -1,10 +1,7 @@
 
 void startCountPulse() {
-    if (!COUNTING_PULSE) {
-        pulseCounter.attach_ms(2, ISRTr);
-        pulsePauser.attach(5, pauseOrResumePulse);
-        COUNTING_PULSE = true;
-    }
+    pulseCounter.attach_ms(2, ISRTr);
+    pulsePauser.attach(5, pauseOrResumePulse);
 }
 
 void pauseOrResumePulse() {
@@ -20,7 +17,6 @@ void pauseOrResumePulse() {
 void stopCountPulse() {
     pulseCounter.detach();
     pulsePauser.detach();
-    COUNTING_PULSE = false;
 }
 
 void checkIfBPMAbnormal() {
