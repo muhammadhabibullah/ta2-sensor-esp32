@@ -11,6 +11,7 @@ void startCycling() {
             lastLong = GPS.location.lng();
             lastAltitude = GPS.altitude.meters();
             CURRENT_CHANNEL = STOPWATCH;
+            startCountPulse();
         } else {
             CURRENT_CHANNEL = SEARCH_GPS;
             searchGPSMillis = millis();
@@ -24,7 +25,6 @@ void whileCycling() {
         countDistance();
         countElevation();
         countTime();
-        //   countBPM(); // count every 5 secs??
         //   saveRawData();
         //   checkIfBPMAbnormal();
     }
@@ -34,7 +34,7 @@ void whileCycling() {
 void stopCycling() {
     if((digitalRead(STOP_PIN) == LOW) && (IS_CYCLING)){
         IS_CYCLING = false;
-        // stopCountPulse();
+        stopCountPulse();
         //   calculateCyclingData();
         //   saveFinaleData();
     }

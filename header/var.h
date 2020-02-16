@@ -6,6 +6,7 @@ U8G2_SSD1306_128X64_NONAME_1_HW_I2C u8g2(U8G2_R0, U8X8_PIN_NONE);
 // SoftwareSerial GPSSerial(RX2_PIN, TX2_PIN);
 TinyGPSPlus GPS;
 HTTPClient http;
+Ticker pulseCounter, pulsePauser;
 
 // WIFI
 bool IS_WIFI_CONNECTED = false;
@@ -53,6 +54,26 @@ char dateTimeStr[20];
 char dateStr[32];
 char timeStr[8];
 unsigned long elapsedTime, startTime;
+
+// BPM
+bool COUNTING_PULSE = false;
+bool PAUSING_PULSE = false;
+// these variables are volatile because they are used during the interrupt service routine!
+volatile int BPM = 0;                   // used to hold the pulse rate
+volatile int Signal;                // holds the incoming raw data
+volatile int IBI = 600;             // holds the time between beats, must be seeded! 
+volatile boolean Pulse = false;     // true when pulse wave is high, false when it's low
+volatile boolean QS = false;        // becomes true when Arduoino finds a beat.
+
+volatile int rate[10];                    // array to hold last ten IBI values
+volatile unsigned long sampleCounter = 0; // used to determine pulse timing
+volatile unsigned long lastBeatTime = 0;  // used to find IBI
+volatile int P =512;                      // used to find peak in pulse wave, seeded
+volatile int T = 512;                     // used to find trough in pulse wave, seeded
+volatile int thresh = 512;                // used to find instant moment of heart beat, seeded
+volatile int amp = 100;                   // used to hold amplitude of pulse waveform, seeded
+volatile boolean firstBeat = true;        // used to seed rate array so we startup with reasonable BPM
+volatile boolean secondBeat = false;      // used to seed rate array so we startup with reasonable BPM
 
 // String formattedDate;
 // String dayStamp;
