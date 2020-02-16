@@ -24,7 +24,7 @@ void stopCountPulse() {
 }
 
 void checkIfBPMAbnormal() {
-    if (BPM > (220 - cycler.yearAge)) {
+    if (BPM > cycler.maxHeartRate) {
         OVER_BPM = true;
         LOW_BPM = false;
     } else if (BPM < 30) {
