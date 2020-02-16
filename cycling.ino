@@ -1,5 +1,5 @@
 
-// Reset all cycling variable and set cycling status to TRUE when cycler push START/STOP button
+// Reset all cycling variable and set cycling status to TRUE when cycler push START button
 void startCycling() {
     if((digitalRead(START_PIN) == LOW) && (!IS_CYCLING)){
         if ((GPS.time.isValid()) && (GPS.date.isValid())) { //  && (currentDay != 0)
@@ -30,7 +30,7 @@ void whileCycling() {
     }
 }
 
-// Stop counting cycling metrics, calculate cycling data and set cycling status to FALSE when cycler push START/STOP button
+// Stop counting cycling metrics, calculate cycling data and set cycling status to FALSE when cycler push STOP button
 void stopCycling() {
     if((digitalRead(STOP_PIN) == LOW) && (IS_CYCLING)){
         IS_CYCLING = false;

@@ -17,5 +17,5 @@ void loop() {
     startCycling();
     whileCycling();
     stopCycling();
-    // postCyclerData();
+    // sendCyclingData();
 }
