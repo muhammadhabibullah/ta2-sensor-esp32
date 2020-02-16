@@ -139,7 +139,11 @@ void displayHeartRate() {
     sprintf(bpmStr, "%d", BPM);
     printInformation(bpmStr);
     printInformationUnit("bpm");
-    // printSubInformation("Above your max heart rate!");
+    if (OVER_BPM) {
+        printSubInformation("Detak jantung over!");
+    } else if (LOW_BPM) {
+        printSubInformation("Detak jantung pelan!");
+    }
 }
 
 // Display searching GPS page while GPS doesn't get a satellite signal yet on OLED

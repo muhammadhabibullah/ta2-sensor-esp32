@@ -25,8 +25,9 @@ void whileCycling() {
         countDistance();
         countElevation();
         countTime();
+        checkIfBPMAbnormal();
         //   saveRawData();
-        //   checkIfBPMAbnormal();
+        
     }
 }
 

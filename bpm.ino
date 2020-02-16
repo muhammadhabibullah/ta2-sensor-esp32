@@ -22,3 +22,23 @@ void stopCountPulse() {
     pulsePauser.detach();
     COUNTING_PULSE = false;
 }
+
+void checkIfBPMAbnormal() {
+    if (BPM > (220 - cycler.yearAge)) {
+        OVER_BPM = true;
+        LOW_BPM = false;
+    } else if (BPM < 30) {
+        OVER_BPM = false;
+        LOW_BPM = true;
+    } else {
+        OVER_BPM = false;
+        LOW_BPM = false;
+    }
+
+    if (OVER_BPM || LOW_BPM) {
+        CURRENT_CHANNEL = HEART_RATE;
+        EasyBuzzer.beep(frequency, beeps);
+        EasyBuzzer.stopBeep();
+        // EasyBuzzer.update();
+    }
+}

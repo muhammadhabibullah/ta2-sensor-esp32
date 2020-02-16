@@ -7,6 +7,7 @@
 #define STOP_PIN 14 // ???
 #define LED_PIN 4
 #define PULSE_PIN 34
+#define BUZZER_PIN 2
 
 // #define CYCLING_BUTTON D3
 // #define CHANNEL_BUTTON D4

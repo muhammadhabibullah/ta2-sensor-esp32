@@ -58,6 +58,8 @@ unsigned long elapsedTime, startTime;
 // BPM
 bool COUNTING_PULSE = false;
 bool PAUSING_PULSE = false;
+bool LOW_BPM = false;
+bool OVER_BPM = false;
 // these variables are volatile because they are used during the interrupt service routine!
 volatile int BPM = 0;                   // used to hold the pulse rate
 volatile int Signal;                // holds the incoming raw data
@@ -74,6 +76,10 @@ volatile int thresh = 512;                // used to find instant moment of hear
 volatile int amp = 100;                   // used to hold amplitude of pulse waveform, seeded
 volatile boolean firstBeat = true;        // used to seed rate array so we startup with reasonable BPM
 volatile boolean secondBeat = false;      // used to seed rate array so we startup with reasonable BPM
+
+// BUZZER
+unsigned int frequency = 1000;
+unsigned int beeps = 3;
 
 // String formattedDate;
 // String dayStamp;
