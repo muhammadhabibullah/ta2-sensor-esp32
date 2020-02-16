@@ -34,7 +34,6 @@ void appendFile(fs::FS &fs, const char * path, const char * message) {
       Serial.println("Append failed");
     }
     file.close();
-    
 }
 
 
@@ -54,5 +53,4 @@ void createFile(const char * path) {
         Serial.println(" file already exists");  
     }
     file.close();
-    
 }

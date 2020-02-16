@@ -1,8 +1,6 @@
 
 // Get current date and time using GPS
-void getDateTime(TinyGPSDate &d, TinyGPSTime &t, int gmt) {
-  
-    int gmtDiff = 0;
+void getDateTime(TinyGPSDate &d, TinyGPSTime &t, int gmt) {int gmtDiff = 0;
     if (gmt >= 0) {
         gmtDiff = 24 - gmt;
     }
@@ -62,6 +60,8 @@ void getDateTime(TinyGPSDate &d, TinyGPSTime &t, int gmt) {
             }
         }
         // TODO: add if GMT is less than zero
+
+        sprintf(dateStr, "%02d/%02d/%02d", currentYear, currentMonth, currentDay);
     }
     
     if (t.isValid()){
@@ -77,10 +77,11 @@ void getDateTime(TinyGPSDate &d, TinyGPSTime &t, int gmt) {
             currentSecond = t.second();
         }
         // TODO: add if GMT is less than zero
+
+        sprintf(timeStr, "%02d:%02d:%02d", currentHour, currentMinute, currentSecond);
     }
     
-    sprintf(dateTimeStr, "%02d-%02d-%02dT%02d:%02d:%02d", currentYear, currentMonth, currentDay, currentHour, currentMinute, currentSecond);
-    sprintf(dateStr, "%02d/%02d/%02d", currentYear, currentMonth, currentDay);
-    sprintf(timeStr, "%02d:%02d:%02d", currentHour, currentMinute, currentSecond);
-    
+    // if ((d.isValid()) && (t.isValid())) { 
+    //     sprintf(dateTimeStr, "%02d-%02d-%02dT%02d:%02d:%02d", currentYear, currentMonth, currentDay, currentHour, currentMinute, currentSecond);
+    // }
 }

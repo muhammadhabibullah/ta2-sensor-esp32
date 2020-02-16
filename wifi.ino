@@ -1,7 +1,6 @@
 
 // Initialize WLAN connection
 void connectWifi() {
-  
     Serial.print("Connecting to ");
     Serial.println(WLAN_SSID);
     WiFi.begin(WLAN_SSID, WLAN_PASS);
@@ -23,5 +22,4 @@ void connectWifi() {
     
     timeClient.begin();
     timeClient.setTimeOffset(25200);
-    
 }

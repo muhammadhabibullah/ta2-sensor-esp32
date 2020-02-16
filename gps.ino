@@ -1,7 +1,6 @@
 
 // Update current location using GPS
 void getGPS() {
-
     currentDate = GPS.date;
     currentTime = GPS.time;
     totalSatellite = GPS.satellites.value();
@@ -26,16 +25,16 @@ void getGPS() {
     
     smartDelay(1000);
   
-    if (millis() > 5000 && GPS.charsProcessed() < 10) {
-      // Serial.println(F("No GPS detected: check wiring."));
-    }
+    // if (millis() > 5000 && GPS.charsProcessed() < 10) {
+    //   // Serial.println(F("No GPS detected: check wiring."));
+    // }
 }
 
 // Make GPS not checking location rapidly 
 static void smartDelay(unsigned long ms) {
     unsigned long start = millis();
     do {
-        while (GPSSerial.available())
-        GPS.encode(GPSSerial.read());
+        while (Serial1.available())
+        GPS.encode(Serial1.read());
     } while (millis() - start < ms);
 }

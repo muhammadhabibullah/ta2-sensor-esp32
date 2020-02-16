@@ -9,7 +9,8 @@
 #include <TinyGPS++.h>
 #include <HTTPClient.h>
 #include <ArduinoJson.h>
-#include <SoftwareSerial.h>
+#include <HardwareSerial.h>
+#include <PulseSensorPlayground.h>
 
 #include "header/config.h"
 #include "header/pin.h"

@@ -1,7 +1,6 @@
 
 // Display home page of sensor system interface on OLED
 void displayHomePage(){
-  
     u8g2.begin();
     u8g2.firstPage();
     do {
@@ -15,88 +14,54 @@ void displayHomePage(){
         u8g2.setCursor(40, 60);
         u8g2.print(" . . . . . ");  
     } while (u8g2.nextPage());
-    
 }
 
 // Display cycling information based on current channel on OLED
 void displayChannel() {
-
-    if (digitalRead(CHANNEL_PIN) == LOW) {
+    if (((digitalRead(STOP_PIN) == LOW) && (!IS_CYCLING)) || ((digitalRead(START_PIN) == LOW) && (IS_CYCLING))) {
         CURRENT_CHANNEL = ++CURRENT_CHANNEL;
     }
 
     if((CURRENT_CHANNEL>LAST_CHANNEL) && (CURRENT_CHANNEL != SEARCH_GPS)){
         CURRENT_CHANNEL = CLOCK;
     }
-    
-    switch (CURRENT_CHANNEL) {
-        case CLOCK:
-        u8g2.firstPage();
-        do {
-            displayClock(GPS.date, GPS.time);
-        } while ( u8g2.nextPage() );
-        delay(10);
-        break;
-        
-        case STOPWATCH:
-        u8g2.firstPage();
-        do {
-            // Serial.println("Print Stopwatch");
-            displayStopwatch();
-        } while ( u8g2.nextPage() );
-        delay(10);
-        break;
-        
-        case DISTANCE:
-        u8g2.firstPage();
-        do {
-            // Serial.println("Print Distance");
-            displayDistance();
-        } while ( u8g2.nextPage() );
-        delay(10);
-        break;
-          
-        case PACE:
-        u8g2.firstPage();
-        do {
-            // Serial.println("Print pace");
-            displayPace();
-        } while ( u8g2.nextPage() );
-        delay(10);
-        break;
-        
-        case ELEVATION:
-        u8g2.firstPage();
-        do {
-            // Serial.println("Print Elevation");
-            displayElevation();
-        } while ( u8g2.nextPage() );
-        delay(10);
-        break;
-  
-        case HEART_RATE:
-        u8g2.firstPage();
-        do {
-            // Serial.println("Print HR");
-            displayHeartRate();
-        } while ( u8g2.nextPage() );
-        delay(10);
-        break;
 
-        case SEARCH_GPS:
-        u8g2.firstPage();
-        do {
-            // Serial.println("Print Search GPS");
-            displaySearchGPSPage();  
-        } while ( u8g2.nextPage() );
-        delay(10);
-        
-        if ((millis() - searchGPSMillis)/1000 > SEARCH_GPS_DISPLAY_TIME) {
-          CURRENT_CHANNEL = 0;
+    u8g2.firstPage();
+    do {
+        switch (CURRENT_CHANNEL) {
+            case CLOCK:
+            displayClock(GPS.date, GPS.time);
+            break;
+
+            case STOPWATCH:
+            displayStopwatch();
+            break;
+
+            case DISTANCE:
+            displayDistance();
+            break;
+
+            case PACE:
+            displayPace();
+            break;
+
+            case ELEVATION:
+            displayElevation();
+            break;
+
+            case HEART_RATE:
+            displayHeartRate();
+            break;
+
+            case SEARCH_GPS:
+            displaySearchGPSPage();
+            if ((millis() - searchGPSMillis)/1000 > SEARCH_GPS_DISPLAY_TIME) {
+                CURRENT_CHANNEL = 0;
+            }
+            break;
         }
-        break;
-    }
-    
+    } while ( u8g2.nextPage() );
+    delay(10);
 }
 
 // Display time on OLED

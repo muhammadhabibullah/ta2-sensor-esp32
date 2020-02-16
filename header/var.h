@@ -3,7 +3,7 @@ WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP);
 WiFiClient wifiClient;
 U8G2_SSD1306_128X64_NONAME_1_HW_I2C u8g2(U8G2_R0, U8X8_PIN_NONE);
-SoftwareSerial GPSSerial(RX2_PIN, TX2_PIN);
+// SoftwareSerial GPSSerial(RX2_PIN, TX2_PIN);
 TinyGPSPlus GPS;
 HTTPClient http;
 
@@ -48,9 +48,9 @@ TinyGPSTime currentTime;
 
 // CLOCK & STOPWATCH
 int currentDay = 0, currentMonth = 0, currentYear = 0, currentHour = 0, currentMinute = 0, currentSecond = 0;
-char *stopwatch = "00:00:00";
+char stopwatch[32];
 char dateTimeStr[20];
-char dateStr[10];
+char dateStr[32];
 char timeStr[8];
 unsigned long elapsedTime, startTime;
 
