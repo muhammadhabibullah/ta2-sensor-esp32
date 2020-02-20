@@ -1,5 +1,6 @@
 
-void strReplace(char *src, char *oldchars, char *newchars) { // utility string function
+// strReplace replace certain character on array of char
+void strReplace(char *src, char *oldchars, char *newchars) {
   char *p = strstr(src, oldchars);
   char buf[MAX_STRING_LENGTH];
   do {
