@@ -10,10 +10,14 @@ Ticker pulseCounter, pulsePauser;
 
 // WIFI
 bool IS_WIFI_CONNECTED = false;
-const int CONNECTING_WIFI_TIMEOUT = 30;
+const int CONNECTING_WIFI_TIMEOUT = 15;
 
 // FILE
 const char* STORED_CD_FILEPATH =  "/stored_cycling_data.csv";
+char* cdFilePath;
+const int CD_FILEPATH_LENGTH = 25;
+char CD_FILEPATH[CD_FILEPATH_LENGTH];
+#define MAX_STRING_LENGTH 30
 
 // CYCLER DATA
 const int CD_JSON_TOTAL_OBJECTS = 4;

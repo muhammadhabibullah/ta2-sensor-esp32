@@ -31,5 +31,8 @@ void getCyclerData() {
         }
 
         http.end();   
+    } else {
+        cycler.yearAge = 25;
+        cycler.maxHeartRate = 220 - cycler.yearAge;
     }
 }

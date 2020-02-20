@@ -6,6 +6,6 @@ String getMataAngin(double course) {
         "Selatan", "Barat Daya", 
         "Barat", "Barat Laut", 
     };
-    int direction = (int)((course + 22.5f) / 45f);
+    int direction = (int)((course + 22.5f) / 45);
     return directions[direction % 8];
 }
