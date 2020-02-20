@@ -1,7 +1,7 @@
 
 // createCyclingDataFile create csv file with current date time name
 void createCyclingDataFile() {
-    sprintf(CD_FILEPATH, "/%s.csv", dateTimeStr);
+    sprintf(CD_FILEPATH, "/%s-raw.csv", dateTimeStr);
     strReplace(CD_FILEPATH, ":", "");
     createFile(CD_FILEPATH);
     String cdFileHeader = "seconds,lat,long,alt,pace,bpm\r\n";
