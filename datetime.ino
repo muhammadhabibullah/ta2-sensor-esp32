@@ -61,8 +61,6 @@ void getDateTime(TinyGPSDate &d, TinyGPSTime &t, int gmt) {
             }
         }
         // TODO: add if GMT is less than zero
-
-        sprintf(dateStr, "%02d/%02d/%02d", currentMonth, currentDay, currentYear);
     }
     
     if (t.isValid()){
@@ -78,11 +76,5 @@ void getDateTime(TinyGPSDate &d, TinyGPSTime &t, int gmt) {
             currentSecond = t.second();
         }
         // TODO: add if GMT is less than zero
-
-        sprintf(timeStr, "%02d:%02d:%02d", currentHour, currentMinute, currentSecond);
-    }
-    
-    if ((d.isValid()) && (t.isValid())) { 
-        sprintf(dateTimeStr, "%02d-%02d-%02dT%02d:%02d:%02d", currentYear, currentMonth, currentDay, currentHour, currentMinute, currentSecond);
     }
 }

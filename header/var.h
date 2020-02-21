@@ -19,6 +19,7 @@ const int CD_FILEPATH_LENGTH = 30;
 char CDR_FILEPATH[CD_FILEPATH_LENGTH];
 char CDF_FILEPATH[CD_FILEPATH_LENGTH];
 #define MAX_STRING_LENGTH 30
+char cyclingDataFileName[20];
 
 // CYCLER DATA
 const int CD_JSON_TOTAL_OBJECTS = 4;
@@ -56,7 +57,7 @@ TinyGPSTime currentTime;
 int currentDay = 0, currentMonth = 0, currentYear = 0, currentHour = 0, currentMinute = 0, currentSecond = 0;
 char stopwatch[32];
 char dateTimeStr[20];
-char dateStr[32];
+char dateStr[11];
 char timeStr[8];
 unsigned long elapsedTime, startTime;
 

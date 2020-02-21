@@ -1,11 +1,10 @@
 
 // createCyclingDataFile create csv file with current date time name
 void createCyclingDataFile() {
-    sprintf(CDR_FILEPATH, "/%s-raw.csv", startDateTime);
-    strReplace(CDR_FILEPATH, ":", "");
+    sprintf(cyclingDataFileName, "%02d%02d%02d%02d%02d%02d", currentYear, currentMonth, currentDay, currentHour, currentMinute, currentSecond);
+    sprintf(startDateTime, "%02d-%02d-%02dT%02d:%02d:%02d", currentYear, currentMonth, currentDay, currentHour, currentMinute, currentSecond);
+    sprintf(CDR_FILEPATH, "/%s-raw.csv", cyclingDataFileName);
     createFile(CDR_FILEPATH);
-    // String cdFileHeader = "seconds,lat,long,alt,pace,bpm\r\n";
-    // appendFile(SD, CDR_FILEPATH, cdFileHeader.c_str());
 }
 
 // saveCyclingData save cycling data to csv file
@@ -19,11 +18,9 @@ void saveCyclingData() {
 
 // saveFinaleData save cycling finale data to csv file
 void saveFinaleData() {
-    sprintf(CDF_FILEPATH, "/%s-finale.csv", startDateTime);
-    strReplace(CDF_FILEPATH, ":", "");
+    sprintf(finishDateTime, "%02d%02d%02dT%02d:%02d:%02d", currentYear, currentMonth, currentDay, currentHour, currentMinute, currentSecond);
+    sprintf(CDF_FILEPATH, "/%s-finale.csv", cyclingDataFileName);
     createFile(CDF_FILEPATH);
-    // String cdFileHeader = "bid,start,finish,distance,elevation,pace,bpm\r\n";
-    // appendFile(SD, CDF_FILEPATH, cdFileHeader.c_str());
     String cdFileData = String(BICYCLE_ID) + "," + String(startDateTime) + "," + String(finishDateTime) +
         "," + String(totalDistance) + "," + String(totalElevation) + "," + String(averagePace) + 
         "," + String(averageBPM) + "\r\n";
