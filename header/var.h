@@ -3,7 +3,6 @@ WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP);
 WiFiClient wifiClient;
 U8G2_SSD1306_128X64_NONAME_1_HW_I2C u8g2(U8G2_R0, U8X8_PIN_NONE);
-// SoftwareSerial GPSSerial(RX2_PIN, TX2_PIN);
 TinyGPSPlus GPS;
 HTTPClient http;
 Ticker pulseCounter, pulsePauser;
@@ -93,9 +92,3 @@ char startDateTime[20];
 char finishDateTime[20];
 double averagePace = 0, averageBPM = 0;
 String paceStr, bpmStr;
-
-// String formattedDate;
-// String dayStamp;
-// String timeStamp;
-// RTC_DATA_ATTR int readingID = 0;
-// String dataMessage;
