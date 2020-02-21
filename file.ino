@@ -45,7 +45,7 @@ void createFile(const char * path) {
     File file = SD.open(path);
     if(!file) {
         Serial.print(path);
-        Serial.println(" file doens't exist");
+        Serial.println(" file doesn't exist");
         Serial.println("Creating file...");
     }
     else {

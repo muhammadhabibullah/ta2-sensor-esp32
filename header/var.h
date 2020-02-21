@@ -15,8 +15,9 @@ const int CONNECTING_WIFI_TIMEOUT = 15;
 // FILE
 const char* STORED_CD_FILEPATH =  "/stored_cycling_data.csv";
 char* cdFilePath;
-const int CD_FILEPATH_LENGTH = 25;
-char CD_FILEPATH[CD_FILEPATH_LENGTH];
+const int CD_FILEPATH_LENGTH = 30;
+char CDR_FILEPATH[CD_FILEPATH_LENGTH];
+char CDF_FILEPATH[CD_FILEPATH_LENGTH];
 #define MAX_STRING_LENGTH 30
 
 // CYCLER DATA
@@ -81,8 +82,16 @@ volatile boolean firstBeat = true;        // used to seed rate array so we start
 volatile boolean secondBeat = false;      // used to seed rate array so we startup with reasonable BPM
 
 // BUZZER
-unsigned int frequency = 1000;
-unsigned int beeps = 3;
+unsigned int frequency = 1000;  
+unsigned int onDuration = 10;
+unsigned long lastPeriodStart;
+const int periodDuration=5000;
+
+// CYCLING DATA
+char startDateTime[20];
+char finishDateTime[20];
+double averagePace = 0, averageBPM = 0;
+String paceStr, bpmStr;
 
 // String formattedDate;
 // String dayStamp;

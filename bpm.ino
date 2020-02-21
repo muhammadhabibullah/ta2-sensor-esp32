@@ -33,8 +33,8 @@ void checkIfBPMAbnormal() {
 
     if (OVER_BPM || LOW_BPM) {
         CURRENT_CHANNEL = HEART_RATE;
-        EasyBuzzer.beep(frequency, beeps);
-        EasyBuzzer.stopBeep();
-        // EasyBuzzer.update();
+        startBuzzer();
+    } else {
+        stopBuzzer();
     }
 }
