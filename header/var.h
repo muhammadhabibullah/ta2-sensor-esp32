@@ -6,6 +6,7 @@ U8G2_SSD1306_128X64_NONAME_1_HW_I2C u8g2(U8G2_R0, U8X8_PIN_NONE);
 TinyGPSPlus GPS;
 HTTPClient http;
 Ticker pulseCounter, pulsePauser;
+PubSubClient mqttClient(BROKER_IP,BROKER_PORT,wifiClient);
 
 // WIFI
 bool IS_WIFI_CONNECTED = false;
@@ -36,6 +37,7 @@ const int DISTANCE = 2;
 const int PACE = 3;
 const int ELEVATION = 4;
 const int HEART_RATE = 5;
+const int SENDING_DATA = 98;
 const int SEARCH_GPS = 99;
 const int LAST_CHANNEL = 5;
 unsigned long searchGPSMillis;
@@ -92,3 +94,13 @@ char startDateTime[20];
 char finishDateTime[20];
 double averagePace = 0, averageBPM = 0;
 String paceStr, bpmStr;
+
+// MQTT
+char JSONRawBuffer[1024];
+char JSONFinBuffer[1024];
+DynamicJsonDocument docRaw(1024);
+DynamicJsonDocument docFin(1024);
+char renamedFile[30];
+String readSDStr;
+char checkFilePath[6];
+char clearFilePath[24];

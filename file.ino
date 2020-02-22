@@ -6,13 +6,13 @@ void writeFile(fs::FS &fs, const char * path, const char * message) {
   
     File file = fs.open(path, FILE_WRITE);
     if(!file) {
-      Serial.println("Failed to open file for writing");
-      return;
+        Serial.println("Failed to open file for writing");
+        return;
     }
     if(file.print(message)) {
-      Serial.println("File written");
+        Serial.println("File written");
     } else {
-      Serial.println("Write failed");
+        Serial.println("Write failed");
     }
     file.close();
   
@@ -25,13 +25,13 @@ void appendFile(fs::FS &fs, const char * path, const char * message) {
   
     File file = fs.open(path, FILE_APPEND);
     if(!file) {
-      Serial.println("Failed to open file for appending");
-      return;
+        Serial.println("Failed to open file for appending");
+        return;
     }
     if(file.print(message)) {
-      Serial.println("Message appended");
+        Serial.println("Message appended");
     } else {
-      Serial.println("Append failed");
+        Serial.println("Append failed");
     }
     file.close();
 }
@@ -53,4 +53,27 @@ void createFile(const char * path) {
         Serial.println(" file already exists");  
     }
     file.close();
+}
+
+void renameFile(const char * path, const char * newPath) {
+	bool renamed = SD.rename(path, newPath);
+	if (!renamed) {
+		Serial.print(path);
+		Serial.println(" file failed to renamed");
+	} else {
+		Serial.print(path);
+		Serial.print(" file renamed to ");
+		Serial.println(newPath);
+	}
+}
+
+void removeFile(const char * path) {
+    bool removed = SD.remove(path);
+    if (!removed) {
+        Serial.print(path);
+		Serial.println(" file failed to removed");
+    } else  {
+        Serial.print(path);
+		Serial.println(" file removed");
+    }
 }

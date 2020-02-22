@@ -39,14 +39,31 @@ void stopCycling() {
         sprintf(finishDateTime, "%02d-%02d-%02dT%02d:%02d:%02d", currentYear, currentMonth, currentDay, currentHour, currentMinute, currentSecond);
         stopCountPulse();
         stopBuzzer();
+        Serial.println("1");
         calculateCyclingData();
+        Serial.println("2");
         saveFinaleData();
+        sendCyclingData();
     }
 }
 
 // Send cycling data from SD card when connected to internet
 void sendCyclingData() {
-    // jika ada data yg belum dikirim ke server
-    // connectWifi();  
-    // sendDataFromSD(); 
+    Serial.print("Connecting to ");
+    Serial.println(WLAN_SSID);
+    while (WiFi.status() != WL_CONNECTED) {
+        delay(1000);
+        Serial.print(".");
+    }
+    while (!mqttClient.connected()) {
+        delay(1000);
+        Serial.print(".");
+    }
+    CURRENT_CHANNEL = SENDING_DATA;
+    displayChannel();
+
+    readCyclingData(CDF_FILEPATH);
+    readCyclingData(CDR_FILEPATH);
+
+    CURRENT_CHANNEL = CLOCK;
 }

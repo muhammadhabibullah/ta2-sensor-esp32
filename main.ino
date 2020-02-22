@@ -7,15 +7,17 @@ void setup() {
     displayHomePage();
     connectSD();
     connectWifi();
+    connectBroker();
     getCyclerData();
+    // createFile(STORED_CD_FILEPATH);
 }
 
 void loop() {
+    mqttClient.loop();
     getGPS();
     getDateTime(currentDate, currentTime, GMT);
     displayChannel();
     startCycling();
     whileCycling();
     stopCycling();
-    // sendCyclingData();
 }

@@ -20,6 +20,7 @@ void displayHomePage(){
 void displayChannel() {
     if (((digitalRead(STOP_PIN) == LOW) && (!CYCLING)) || ((digitalRead(START_PIN) == LOW) && (CYCLING))) {
         CURRENT_CHANNEL = ++CURRENT_CHANNEL;
+        // sendCyclingData();
     }
 
     if((CURRENT_CHANNEL>LAST_CHANNEL) && (CURRENT_CHANNEL != SEARCH_GPS)){
@@ -58,6 +59,10 @@ void displayChannel() {
             if ((millis() - searchGPSMillis)/1000 > SEARCH_GPS_DISPLAY_TIME) {
                 CURRENT_CHANNEL = 0;
             }
+            break;
+
+            case SENDING_DATA:
+            displaySendingDataPage();
             break;
         }
     } while ( u8g2.nextPage() );
@@ -153,4 +158,10 @@ void displaySearchGPSPage() {
     printTitle("MEMUAT", 35, 10);
     printSubInformation("Tidak ada sinyal GPS!");
     printTotalSatellite();
+}
+
+// Display sending cycling data page
+void displaySendingDataPage() {
+    printTitle("MENGIRIM", 30, 10);
+    printSubInformation("Mengirim data bersepeda...");
 }

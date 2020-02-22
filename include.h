@@ -11,6 +11,7 @@
 #include <EasyBuzzer.h>
 #include <HTTPClient.h>
 #include <ArduinoJson.h>
+#include <PubSubClient.h>
 #include <HardwareSerial.h>
 
 #include "header/config.h"
