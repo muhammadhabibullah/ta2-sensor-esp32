@@ -11,7 +11,7 @@ void startCycling() {
             lastLong = GPS.location.lng();
             lastAltitude = GPS.altitude.meters();
             CURRENT_CHANNEL = STOPWATCH;
-            createCyclingDataFile();
+            createRawDataFile();
             startCountPulse();
         } else {
             CURRENT_CHANNEL = SEARCH_GPS;
@@ -27,7 +27,7 @@ void whileCycling() {
         countElevation();
         countTime();
         checkIfBPMAbnormal();
-        saveCyclingData();
+        saveRawData();
     }
 }
 
@@ -38,29 +38,8 @@ void stopCycling() {
         sprintf(finishDateTime, "%02d-%02d-%02dT%02d:%02d:%02d", currentYear, currentMonth, currentDay, currentHour, currentMinute, currentSecond);
         stopCountPulse();
         stopBuzzer();
-        calculateCyclingData();
+        calculateData();
         saveFinaleData();
-        sendCyclingData();
+        sendData();
     }
-}
-
-// Send cycling data from SD card when connected to internet
-void sendCyclingData() {
-    Serial.print("Connecting to ");
-    Serial.println(WLAN_SSID);
-    while (WiFi.status() != WL_CONNECTED) {
-        delay(1000);
-        Serial.print(".");
-    }
-    while (!mqttClient.connected()) {
-        delay(1000);
-        Serial.print(".");
-    }
-    CURRENT_CHANNEL = SENDING_DATA;
-    displayChannel();
-
-    readCyclingData(CDF_FILEPATH);
-    readCyclingData(CDR_FILEPATH);
-
-    CURRENT_CHANNEL = CLOCK;
 }

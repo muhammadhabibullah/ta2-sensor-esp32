@@ -9,7 +9,6 @@ void setup() {
     connectWifi();
     connectBroker();
     getCyclerData();
-    // createFile(STORED_CD_FILEPATH);
 }
 
 void loop() {

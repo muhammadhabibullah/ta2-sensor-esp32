@@ -20,7 +20,6 @@ void displayHomePage(){
 void displayChannel() {
     if (((digitalRead(STOP_PIN) == LOW) && (!CYCLING)) || ((digitalRead(START_PIN) == LOW) && (CYCLING))) {
         CURRENT_CHANNEL = ++CURRENT_CHANNEL;
-        // sendCyclingData();
     }
 
     if((CURRENT_CHANNEL>LAST_CHANNEL) && (CURRENT_CHANNEL != SEARCH_GPS)){
