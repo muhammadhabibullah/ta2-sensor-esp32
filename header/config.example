@@ -6,6 +6,13 @@
 #define WLAN_SSID  "wifi"
 #define WLAN_PASS  "pass"
 
+// MQTT BROKER
+#define BROKER_IP  "127.0.0.1"
+#define BROKER_PORT 1883
+#define CLIENT_NAME "whatever"
+#define CLIENT_USERNAME "username"
+#define CLIENT_PASSWORD "pass"
+
 // SERVER
 #define SERVER_HOST "127.0.0.1"
 #define SERVER_PORT = 8000
