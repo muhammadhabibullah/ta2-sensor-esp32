@@ -39,9 +39,7 @@ void stopCycling() {
         sprintf(finishDateTime, "%02d-%02d-%02dT%02d:%02d:%02d", currentYear, currentMonth, currentDay, currentHour, currentMinute, currentSecond);
         stopCountPulse();
         stopBuzzer();
-        Serial.println("1");
         calculateCyclingData();
-        Serial.println("2");
         saveFinaleData();
         sendCyclingData();
     }

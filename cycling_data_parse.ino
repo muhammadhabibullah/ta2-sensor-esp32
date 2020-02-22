@@ -10,7 +10,6 @@ void readCyclingData(char * path) {
         Serial.println(" file ..");
         strncpy(checkFilePath, path + 16, 3);
         if ((strcmp("fin", checkFilePath)) == 0) {
-            Serial.println("3");
             while (file.available()) {
                 docRaw["b"] = String(BICYCLE_ID);
                 readSDStr = file.readStringUntil(',');
@@ -30,7 +29,6 @@ void readCyclingData(char * path) {
                 publishFinaleData();
             }
         } else if ((strcmp("raw", checkFilePath)) == 0) {
-            Serial.println("4");
             while (file.available()) {
                 docFin["b"] = String(BICYCLE_ID);
                 readSDStr = file.readStringUntil(',');

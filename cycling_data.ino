@@ -19,7 +19,6 @@ void saveCyclingData() {
 // saveFinaleData save cycling finale data to csv file
 void saveFinaleData() {
     sprintf(finishDateTime, "%02d-%02d-%02dT%02d:%02d:%02d", currentYear, currentMonth, currentDay, currentHour, currentMinute, currentSecond);
-    Serial.println("2a");
     sprintf(CDF_FILEPATH, "/%s-finale.csv", cyclingDataFileName);
     createFile(CDF_FILEPATH);
     String cdFileData = String(startDateTime) + "," + String(finishDateTime) +

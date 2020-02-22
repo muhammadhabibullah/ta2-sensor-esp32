@@ -13,7 +13,6 @@ void calculateCyclingData() {
         int countComma;
         int singlePace;
         int singleBPM;
-        Serial.println("1a");
         while (file.available()) {
             str = file.readStringUntil(',');
             countComma = ++countComma;
@@ -33,6 +32,5 @@ void calculateCyclingData() {
             }
         }
     }
-    Serial.println("1b");
     file.close();
 }
