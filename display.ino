@@ -163,5 +163,6 @@ void displaySearchGPSPage() {
 // Display sending cycling data page
 void displaySendingDataPage() {
     printTitle("MENGIRIM", 30, 10);
+    printInformation("      ");
     printSubInformation("Mengirim data bersepeda...");
 }

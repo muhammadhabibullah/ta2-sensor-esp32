@@ -96,39 +96,39 @@ void parseAndUploadData(char * path) {
         strncpy(checkFilePath, path + 16, 3);
         if ((strcmp("fin", checkFilePath)) == 0) {
             while (file.available()) {
-                docRaw["b"] = String(BICYCLE_ID);
+                docFin["b"] = String(BICYCLE_ID);
                 readSDStr = file.readStringUntil(',');
-                docRaw["s"] = readSDStr;
+                docFin["s"] = readSDStr;
                 readSDStr = file.readStringUntil(',');
-                docRaw["f"] = readSDStr;
+                docFin["f"] = readSDStr;
                 readSDStr = file.readStringUntil(',');
-                docRaw["d"] = roundf(readSDStr.toDouble()*100.0)/100.0;
+                docFin["d"] = roundf(readSDStr.toDouble()*1000.0)/1000.0;
                 readSDStr = file.readStringUntil(',');
-                docRaw["e"] = roundf(readSDStr.toDouble()*100.0)/100.0;
+                docFin["e"] = roundf(readSDStr.toDouble()*1000.0)/1000.0;
                 readSDStr = file.readStringUntil(',');
-                docRaw["p"] = roundf(readSDStr.toDouble()*100.0)/100.0;
+                docFin["p"] = roundf(readSDStr.toDouble()*1000.0)/1000.0;
                 readSDStr = file.readStringUntil('\r\n');
-                docRaw["h"] = readSDStr.toInt();
-                serializeJson(docRaw, JSONRawBuffer);
+                docFin["h"] = readSDStr.toInt();
+                serializeJson(docFin, JSONFinBuffer);
 
                 publishFinaleData();
             }
         } else if ((strcmp("raw", checkFilePath)) == 0) {
             while (file.available()) {
-                docFin["b"] = String(BICYCLE_ID);
+                docRaw["b"] = String(BICYCLE_ID);
                 readSDStr = file.readStringUntil(',');
-                docFin["s"] = readSDStr.toInt();
+                docRaw["s"] = readSDStr.toInt();
                 readSDStr = file.readStringUntil(',');
-                docFin["t"] = readSDStr.toDouble();
+                docRaw["t"] = readSDStr.toDouble();
                 readSDStr = file.readStringUntil(',');
-                docFin["g"] = readSDStr.toDouble();
+                docRaw["g"] = readSDStr.toDouble();
                 readSDStr = file.readStringUntil(',');
-                docFin["a"] = roundf(readSDStr.toDouble()*100.0)/100.0;
+                docRaw["a"] = roundf(readSDStr.toDouble()*100.0)/100.0;
                 readSDStr = file.readStringUntil(',');
-                docFin["p"] = roundf(readSDStr.toDouble()*100.0)/100.0;
+                docRaw["p"] = roundf(readSDStr.toDouble()*100.0)/100.0;
                 readSDStr = file.readStringUntil('\r\n');
-                docFin["h"] = readSDStr.toInt();
-                serializeJson(docFin, JSONFinBuffer);
+                docRaw["h"] = readSDStr.toInt();
+                serializeJson(docRaw, JSONRawBuffer);
 
                 publishRawData();
             }
