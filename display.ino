@@ -30,7 +30,7 @@ void displayChannel() {
     do {
         switch (CURRENT_CHANNEL) {
             case CLOCK:
-            displayClock(GPS.date, GPS.time);
+            displayClock(gps.date, gps.time);
             break;
 
             case STOPWATCH:
@@ -119,7 +119,8 @@ void displayPace() {
     sprintf(speedStr, "%d", currentSpeed);
     printInformation(speedStr);
     printInformationUnit("km/jam");
-    printSubInformation(currentHeading);
+    String headingStr = String(currentHeading);
+    printSubInformation(headingStr);
     printTotalSatellite();
 }
 

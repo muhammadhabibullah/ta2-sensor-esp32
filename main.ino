@@ -14,7 +14,7 @@ void setup() {
 void loop() {
     mqttClient.loop();
     getGPS();
-    getDateTime(currentDate, currentTime, GMT);
+    getDateTime(gps.date, gps.time, GMT);
     displayChannel();
     startCycling();
     whileCycling();

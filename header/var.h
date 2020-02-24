@@ -3,7 +3,7 @@ WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP);
 WiFiClient wifiClient;
 U8G2_SSD1306_128X64_NONAME_1_HW_I2C u8g2(U8G2_R0, U8X8_PIN_NONE);
-TinyGPSPlus GPS;
+TinyGPSPlus gps;
 HTTPClient http;
 Ticker pulseCounter, pulsePauser;
 PubSubClient mqttClient(BROKER_IP,BROKER_PORT,wifiClient);
@@ -51,8 +51,6 @@ double currentLat, currentLong, currentAltitude, lastLat, lastLong, lastAltitude
 int totalSatellite, currentSpeed;
 String currentHeading;
 double totalDistance, totalElevation;
-TinyGPSDate currentDate;
-TinyGPSTime currentTime;
 
 // CLOCK & STOPWATCH
 int currentDay = 0, currentMonth = 0, currentYear = 0, currentHour = 0, currentMinute = 0, currentSecond = 0;

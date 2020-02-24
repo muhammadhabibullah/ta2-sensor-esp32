@@ -2,14 +2,14 @@
 // Reset all cycling variable and set cycling status to TRUE when cycler push START button
 void startCycling() {
     if((digitalRead(START_PIN) == LOW) && (!CYCLING)){
-        if ((GPS.time.isValid()) && (GPS.date.isValid()) && (currentDay != 0)) {
+        if ((gps.time.isValid()) && (gps.date.isValid()) && (currentDay != 0)) {
             CYCLING = true;
             totalElevation = 0;
             totalDistance = 0;
             startTime = millis();
-            lastLat = GPS.location.lat();
-            lastLong = GPS.location.lng();
-            lastAltitude = GPS.altitude.meters();
+            lastLat = gps.location.lat();
+            lastLong = gps.location.lng();
+            lastAltitude = gps.altitude.meters();
             CURRENT_CHANNEL = STOPWATCH;
             createRawDataFile();
             startCountPulse();
