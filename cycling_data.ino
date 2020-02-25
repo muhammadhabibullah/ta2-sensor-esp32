@@ -96,11 +96,11 @@ void parseAndUploadData(char * path) {
         strncpy(checkFilePath, path + 16, 3);
         if ((strcmp("fin", checkFilePath)) == 0) {
             while (file.available()) {
-                docFin["b"] = String(BICYCLE_ID);
+                docFin["b"] = String(BICYCLE_ID).toInt();
                 readSDStr = file.readStringUntil(',');
-                docFin["s"] = readSDStr;
+                docFin["s"] = readSDStr + String("Z");
                 readSDStr = file.readStringUntil(',');
-                docFin["f"] = readSDStr;
+                docFin["f"] = readSDStr + String("Z");
                 readSDStr = file.readStringUntil(',');
                 docFin["d"] = roundf(readSDStr.toDouble()*1000.0)/1000.0;
                 readSDStr = file.readStringUntil(',');
@@ -115,7 +115,7 @@ void parseAndUploadData(char * path) {
             }
         } else if ((strcmp("raw", checkFilePath)) == 0) {
             while (file.available()) {
-                docRaw["b"] = String(BICYCLE_ID);
+                docRaw["b"] = String(BICYCLE_ID).toInt();
                 readSDStr = file.readStringUntil(',');
                 docRaw["s"] = readSDStr.toInt();
                 readSDStr = file.readStringUntil(',');
