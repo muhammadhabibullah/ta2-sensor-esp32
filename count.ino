@@ -7,8 +7,10 @@ void countDistance() {
     lastLat,
     lastLong ) / 1000.0;
 
-    totalDistance = totalDistance + distanceBetweenTwoPoints;
-
+    if (distanceBetweenTwoPoints <= 10) {
+        totalDistance = totalDistance + distanceBetweenTwoPoints;
+    }
+    
     lastLat = currentLat;
     lastLong = currentLong;
 
@@ -18,7 +20,7 @@ void countDistance() {
 
 void countElevation() {
     double elevationBetweenTwoPoints = currentAltitude - lastAltitude;
-    if (elevationBetweenTwoPoints < 0) {
+    if (elevationBetweenTwoPoints < 0)  || (elevationBetweenTwoPoints > 3){
       elevationBetweenTwoPoints = 0;
     }
     
