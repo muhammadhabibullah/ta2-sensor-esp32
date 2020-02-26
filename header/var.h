@@ -91,6 +91,7 @@ char startDateTime[20];
 char finishDateTime[20];
 double averagePace = 0, averageBPM = 0;
 String paceStr, bpmStr;
+bool PUBLISHING;
 
 // MQTT
 char JSONRawBuffer[1024];

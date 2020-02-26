@@ -26,6 +26,10 @@ void displayChannel() {
         CURRENT_CHANNEL = CLOCK;
     }
 
+    if (PUBLISHING){
+        CURRENT_CHANNEL = SENDING_DATA;
+    }
+
     u8g2.firstPage();
     do {
         switch (CURRENT_CHANNEL) {

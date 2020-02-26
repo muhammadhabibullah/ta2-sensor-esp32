@@ -10,7 +10,7 @@ void createRawDataFile() {
 // saveRawData save cycling data to csv file
 void saveRawData() {
     if (elapsedTime % 3 == 0) {
-        String cdFileData = String(elapsedTime) + "," + String(currentLat) + "," + String(currentLong) + 
+        String cdFileData = String(elapsedTime) + "," + String(currentLat, 6) + "," + String(currentLong, 6) + 
             "," + String(currentAltitude) + "," + String(currentSpeed) + "," + String(BPM) + "\r\n";
             appendFile(SD, CDR_FILEPATH, cdFileData.c_str());
     }
@@ -67,12 +67,11 @@ void calculateData() {
 void sendData() {
     
     CURRENT_CHANNEL = SENDING_DATA;
+    PUBLISHING = true;
     displayChannel();
 
     parseAndUploadData(CDF_FILEPATH);
     parseAndUploadData(CDR_FILEPATH);
-
-    CURRENT_CHANNEL = CLOCK;
 }
 
 void parseAndUploadData(char * path) {
@@ -123,6 +122,8 @@ void parseAndUploadData(char * path) {
 
                 publishRawData();
             }
+            PUBLISHING = false;
+            CURRENT_CHANNEL = CLOCK;
         }
         strncpy(clearFilePath, path + 1, 18);
         sprintf(renamedFile, "/xx-%s.csv", clearFilePath);
