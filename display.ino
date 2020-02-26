@@ -22,7 +22,7 @@ void displayChannel() {
         CURRENT_CHANNEL = ++CURRENT_CHANNEL;
     }
 
-    if((CURRENT_CHANNEL>LAST_CHANNEL) && (CURRENT_CHANNEL != SEARCH_GPS)){
+    if((CURRENT_CHANNEL>LAST_CHANNEL) && (CURRENT_CHANNEL != SEARCH_GPS) && (CURRENT_CHANNEL != SENDING_DATA)){
         CURRENT_CHANNEL = CLOCK;
     }
 
@@ -163,6 +163,5 @@ void displaySearchGPSPage() {
 // Display sending cycling data page
 void displaySendingDataPage() {
     printTitle("MENGIRIM", 30, 10);
-    printInformation("      ");
     printSubInformation("Mengirim data bersepeda...");
 }

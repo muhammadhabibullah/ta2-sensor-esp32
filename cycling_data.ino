@@ -65,16 +65,7 @@ void calculateData() {
 
 // Send cycling data from SD card when connected to internet
 void sendData() {
-    Serial.print("Connecting to ");
-    Serial.println(WLAN_SSID);
-    while (WiFi.status() != WL_CONNECTED) {
-        delay(1000);
-        Serial.print(".");
-    }
-    while (!mqttClient.connected()) {
-        delay(1000);
-        Serial.print(".");
-    }
+    
     CURRENT_CHANNEL = SENDING_DATA;
     displayChannel();
 

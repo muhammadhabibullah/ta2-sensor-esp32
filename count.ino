@@ -20,7 +20,7 @@ void countDistance() {
 
 void countElevation() {
     double elevationBetweenTwoPoints = currentAltitude - lastAltitude;
-    if (elevationBetweenTwoPoints < 0)  || (elevationBetweenTwoPoints > 3){
+    if ((elevationBetweenTwoPoints < 0)  || (elevationBetweenTwoPoints > 3)){
       elevationBetweenTwoPoints = 0;
     }
     
