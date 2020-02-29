@@ -23,7 +23,7 @@ void checkIfBPMAbnormal() {
     if (BPM > cycler.maxHeartRate) {
         OVER_BPM = true;
         LOW_BPM = false;
-    } else if (BPM < 30) {
+    } else if ((BPM < 30) && (BPM != 0)){
         OVER_BPM = false;
         LOW_BPM = true;
     } else {
