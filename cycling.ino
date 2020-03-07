@@ -2,7 +2,7 @@
 // Reset all cycling variable and set cycling status to TRUE when cycler push START button
 void startCycling() {
     if((digitalRead(START_PIN) == LOW) && (!CYCLING)){
-        if ((gps.time.isValid()) && (gps.date.isValid()) && (currentDay != 0)) {
+        if ((gps.time.isValid()) && (gps.date.isValid()) && (totalSatellite >= 3)) {
             CYCLING = true;
             totalElevation = 0;
             totalDistance = 0;
