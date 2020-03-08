@@ -37,11 +37,13 @@ const int DISTANCE = 2;
 const int PACE = 3;
 const int ELEVATION = 4;
 const int HEART_RATE = 5;
+const int EMERGENCY_WARNING = 97;
 const int SENDING_DATA = 98;
 const int SEARCH_GPS = 99;
 const int LAST_CHANNEL = 5;
 unsigned long searchGPSMillis;
 const int SEARCH_GPS_DISPLAY_TIME = 5;
+const int EMERGENCY_WARNING_DISPLAY_TIME = 5;
 static const unsigned char u8g2_logo_wave[] U8X8_PROGMEM = {
   0xE0, 0x03, 0x18, 0x00, 0xC4, 0x01, 0x32, 0x00, 0x8A, 0x01, 0x69, 0x00, 
   0x25, 0x00, 0x95, 0x01, 0x95, 0x01, 0x01, 0x00, };
@@ -102,3 +104,11 @@ char renamedFile[30];
 String readSDStr;
 char checkFilePath[6];
 char clearFilePath[24];
+
+// EMERGENCY
+const double maxSpeedChange = 20;
+bool DRASTIC_SPEED_CHANGE = false;
+unsigned long emergencyConfirmationTime;
+unsigned long emergencyConfirmationTimeout = 5000;
+unsigned long abnormalBPMPeriod;
+const int maxAbnormalBPMPeriod = 10000;

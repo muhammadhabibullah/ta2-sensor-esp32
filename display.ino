@@ -22,12 +22,16 @@ void displayChannel() {
         CURRENT_CHANNEL = ++CURRENT_CHANNEL;
     }
 
-    if((CURRENT_CHANNEL>LAST_CHANNEL) && (CURRENT_CHANNEL != SEARCH_GPS) && (CURRENT_CHANNEL != SENDING_DATA)){
+    if((CURRENT_CHANNEL>LAST_CHANNEL) && (CURRENT_CHANNEL != SEARCH_GPS) && (CURRENT_CHANNEL != SENDING_DATA) && (CURRENT_CHANNEL != EMERGENCY_WARNING)){
         CURRENT_CHANNEL = CLOCK;
     }
 
     if (PUBLISHING){
         CURRENT_CHANNEL = SENDING_DATA;
+    }
+
+    if (DRASTIC_SPEED_CHANGE){
+        CURRENT_CHANNEL = EMERGENCY_WARNING;
     }
 
     u8g2.firstPage();
@@ -66,6 +70,10 @@ void displayChannel() {
 
             case SENDING_DATA:
             displaySendingDataPage();
+            break;
+
+            case EMERGENCY_WARNING:
+            displayEmergencyPage();
             break;
         }
     } while ( u8g2.nextPage() );
@@ -168,4 +176,9 @@ void displaySearchGPSPage() {
 void displaySendingDataPage() {
     printTitle("MENGIRIM", 30, 10);
     printSubInformation("Mengirim data bersepeda...");
+}
+
+void displayEmergencyPage() {
+    printTitle("DARURAT", 30, 10);
+    printSubInformation("Mendeteksi potensi kecelekaan");
 }

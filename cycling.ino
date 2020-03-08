@@ -27,6 +27,7 @@ void whileCycling() {
         countElevation();
         countTime();
         checkIfBPMAbnormal();
+        checkIfEmergency();
         saveRawData();
     }
 }

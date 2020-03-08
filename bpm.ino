@@ -21,17 +21,23 @@ void stopCountPulse() {
 
 void checkIfBPMAbnormal() {
     if (BPM > cycler.maxHeartRate) {
-        OVER_BPM = true;
-        LOW_BPM = false;
+        if (!OVER_BPM) {
+            abnormalBPMPeriod = millis();
+            OVER_BPM = true;
+            LOW_BPM = false;
+        }
     } else if ((BPM < 30) && (BPM != 0)){
-        OVER_BPM = false;
-        LOW_BPM = true;
+        if (!LOW_BPM) {
+            abnormalBPMPeriod = millis();
+            OVER_BPM = false;
+            LOW_BPM = true;
+        }
     } else {
         OVER_BPM = false;
         LOW_BPM = false;
     }
 
-    if (OVER_BPM || LOW_BPM) {
+    if ((OVER_BPM || LOW_BPM) && (millis()-abnormalBPMPeriod >= maxAbnormalBPMPeriod)) {
         CURRENT_CHANNEL = HEART_RATE;
         startBuzzer();
     } else {
